@@ -1,0 +1,11 @@
+header, footer, main {
+  width:  100%;
+}
+
+header {
+  background-color: lightgreen;
+}
+
+footer {
+  background-color: lightcoral;
+}
