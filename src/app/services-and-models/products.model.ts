@@ -1,7 +1,17 @@
+export class AllProductsModel {
+  constructor(
+    private cars: CarModel[],
+    private parts: PartModel[],
+    private services: MechanicServiceModel[],
+    private engines: EngineModel[],
+    private gadgets: GadgetModel[]
+  ) {}
+}
+
 export class CarModel {
   constructor(
     private id: string,
-    private type: string,
+    private name: string,
     private prodYear: number,
     private engine: string,
     private fuel: string,
@@ -43,11 +53,8 @@ export class MechanicServiceModel {
     private description: string,
     private images: any,
     private subCategories: any,
-    private stockAmount: number,
-    private stockUnit: string,
     private price : number,
     private priceOld: number,
-    private producer: string,
     private rating: number,
     private opinions: any
   ) {}
@@ -61,8 +68,6 @@ export class EngineModel {
     private description: string,
     private images: any,
     private subCategories: any,
-    private stockAmount: number,
-    private stockUnit: string,
     private price : number,
     private priceOld: number,
     private producer: string,
