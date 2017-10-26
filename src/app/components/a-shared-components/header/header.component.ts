@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../../../services-and-models/categories.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  mainCategories = this.categoriesService.mainCategories;
+  navBarReveal = false;
+  
+  constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
+  }
+
+  revealMenuMobille() {
+    return this.navBarReveal = !this.navBarReveal;
   }
 
 }

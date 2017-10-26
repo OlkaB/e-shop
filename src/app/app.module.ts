@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routes/app-routing.module';
+
+import { ProductsService } from './services-and-models/products.service';
+import { CategoriesService } from './services-and-models/categories.service';
 
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
@@ -49,9 +53,10 @@ import { HeaderComponent } from './components/a-shared-components/header/header.
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [CategoriesService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

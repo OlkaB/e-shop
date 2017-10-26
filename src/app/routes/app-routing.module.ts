@@ -26,11 +26,11 @@ import { PurchasePagesComponent } from '../components/purchase-pages/purchase-pa
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent, pathMatch: 'full'},
-  {path: 'c/:name_id', component: CategoryPageComponent},
-  {path: 'c/:id/p/:name_id', component: ProductPageComponent},
+  {path: 'c/:id', component: CategoryPageComponent},
+  {path: 'p/:id', component: ProductPageComponent},
   {path: 'cart', component: BasketPageComponent},
-  {path: 'search/:query/noproduct', component: NoSearchResultPageComponent},
   {path: 'order', component: PurchasePagesComponent},
+  {path: 'search/:query/noproduct', component: NoSearchResultPageComponent},
   {path: '**', component: NotFoundPageComponent}
 ];
 
