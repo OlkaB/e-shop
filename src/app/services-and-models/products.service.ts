@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CategoriesService } from './categories.service';
 import { AllProductsModel, CarModel, PartModel, MechanicServiceModel, EngineModel, GadgetModel } from './products.model'
 
 
@@ -26,15 +27,48 @@ export class ProductsService {
     ]
   );
 
-  constructor() { }
+  constructor(private categoriesService: CategoriesService) { }
 
-  getAllProducts() {
-    console.log('All products: ', this.allProducts);
-    return this.allProducts;
+  getCategoryProducts(categoryId) {
+    console.log("Particular category (" + categoryId + ") products: ", this.allProducts[categoryId]);
+    return this.allProducts[categoryId].slice();
   }
 
-  getCategoryProducts(category) {
-    console.log("Particular category (" + category + ") products: ", this.allProducts[category]);
-    return this.allProducts[category].slice();
+  getProductByIdFromCat(categoryId, productId) {
+    let getCategoryProds = this.allProducts[this.categoriesService.getMainCategoryName(categoryId)]
+    return getCategoryProds.filter(function(item) {
+      return item.id == productId;
+    });
   }
+
+  getProductByIdFromAllProds(searchedProductId) {
+    let mainCategoriesObj = this.categoriesService.mainCategories;    
+
+    for(let i = 0; i < mainCategoriesObj.length; i++) {
+      let outcome = this.allProducts[mainCategoriesObj[i].name].filter(function(item) {
+        //console.log("BASKET LOOP Step2_item: ", item);
+        console.log(i, ". BASKET LOOP Step3_data: searchedProductId_", searchedProductId, typeof searchedProductId, " loopedItemId_", item.id, typeof item.id);
+        return item.id == searchedProductId;
+      });
+      //console.log("OUTCOME: ", outcome);
+      //console.log("Checking outcome: ", outcome !== undefined && outcome.length > 0)
+      if (outcome !== undefined && outcome.length > 0) {
+        //console.log("break here");
+        return outcome;
+      }
+    }
+  }
+
+  getProductByNameMatch(match) {
+    /*var jsObjects = [
+     {a: 1, b: 2}, 
+     {a: 3, b: 4}, 
+     {a: 5, b: 6}, 
+     {a: 7, b: 8}
+    ];
+    var result = jsObjects.filter(function( obj ) {
+      return obj.b == 6;
+    });*/
+  }
+
 }

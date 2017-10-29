@@ -1,3 +1,45 @@
 <p>
   product-page works!
 </p>
+<div class="row left-pane product-piture">
+  <div class="col-xs-12 col-sm-2">
+    <app-current-categories></app-current-categories>
+  </div>
+  <div class="col-xs-12 col-sm-10 right-pane product-data">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5">
+        <img [src]="this.productActive[0].images[0]" [alt]="this.productActive[0].name" class="img-responsive">
+      </div>
+      <div class="col-xs-12 col-sm-7">
+        <h2>
+          {{ this.productActive[0].name }}
+        </h2>
+        <form>
+          <div class="row">
+            <div class="col-xs-6">
+                <label>
+                  <input type="number" name="productAmount" value="1" class="add-to-cart-amount">
+                  &nbsp;&nbsp;{{ this.productActive[0].stockUnit }}
+                </label>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-primary" type="button"><!-- [data-id]="this.productActive[0].id" Create attr directive  -->
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row product-description">
+      <div class="col-xs-12">
+        <h3>
+            Product description
+        </h3>
+        <p>
+          {{ this.productActive[0].description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

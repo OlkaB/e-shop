@@ -1,3 +1,9 @@
 .container-fluid {
   max-width:  1500px;
 }
+
+.add-to-cart-amount {
+  text-align:  center;
+  width:  60px;
+  font-size: 1.8rem;
+}

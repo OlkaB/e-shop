@@ -7,6 +7,7 @@ import { RoutingModule } from './routes/app-routing.module';
 
 import { ProductsService } from './services-and-models/products.service';
 import { CategoriesService } from './services-and-models/categories.service';
+import { CurrentUserDataService } from './services-and-models/current-user-data.service';
 
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
@@ -27,6 +28,8 @@ import { BreadcrumbsComponent } from './components/a-shared-components/breadcrum
 import { CurrentCategoriesComponent } from './components/a-shared-components/current-categories/current-categories.component';
 import { FooterComponent } from './components/a-shared-components/footer/footer.component';
 import { HeaderComponent } from './components/a-shared-components/header/header.component';
+import { ProductRatingComponent } from './components/a-shared-components/product-rating/product-rating.component';
+import { AddBasketPopupComponent } from './components/a-shared-components/add-basket-popup/add-basket-popup.component';
 
 
 @NgModule({
@@ -38,6 +41,7 @@ import { HeaderComponent } from './components/a-shared-components/header/header.
     ProductPageComponent,
     ProductDataComponent,
     BasketPageComponent,
+    BasketItemsComponent,
     EmptyBasketComponent,
     NotFoundPageComponent,
     NoSearchResultPageComponent,
@@ -49,14 +53,16 @@ import { HeaderComponent } from './components/a-shared-components/header/header.
     BreadcrumbsComponent,
     CurrentCategoriesComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductRatingComponent,
+    AddBasketPopupComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RoutingModule
   ],
-  providers: [CategoriesService, ProductsService],
+  providers: [CategoriesService, ProductsService, CurrentUserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

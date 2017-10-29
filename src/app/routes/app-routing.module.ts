@@ -26,8 +26,8 @@ import { PurchasePagesComponent } from '../components/purchase-pages/purchase-pa
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent, pathMatch: 'full'},
-  {path: 'c/:id', component: CategoryPageComponent},
-  {path: 'p/:id', component: ProductPageComponent},
+  {path: 'c/:catId', component: CategoryPageComponent, pathMatch: 'full'},
+  {path: 'c/:catId/p/:prodId', component: ProductPageComponent},
   {path: 'cart', component: BasketPageComponent},
   {path: 'order', component: PurchasePagesComponent},
   {path: 'search/:query/noproduct', component: NoSearchResultPageComponent},

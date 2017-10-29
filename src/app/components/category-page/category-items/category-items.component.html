@@ -1,21 +1,41 @@
 <p>
   category-items works!
 </p>
-<h2>In our {{currentCategory.name}} offer we have:</h2>
+<h2>
+  In our {{currentCategory.name}} offer we have:
+</h2>
 <br><br>
 <ul class="list-group product-list" *ngFor="let item of currentCategoryProducts">
   <li class="list-group-item list-group-item-action product-list_item">
     <div class="row">
       <div class="col-xs-3">
-        <a><img [src]="item.images[0]" alt="" class="img-responsive"></a>
+        <a [routerLink]="['/c', currentCategory.id, 'p', item.id]" [title]="item.name">
+          <img [src]="item.images[0]" [alt]="item.name" class="img-responsive">
+        </a>
       </div>
       <div class="col-xs-9">
-        <a><h3>{{ item.name }}</h3></a>
+        <a [routerLink]="['/c', currentCategory.id, 'p', item.id]">
+          <h3>
+            {{ item.name }}, id: {{ item.id }}
+          </h3>
+        </a>
         <p class="rating">product rating {{ item.rating }}</p>
-        <a><p class="description">product description: {{ item.description }}</p></a>
-        <p class="price"><b>price: {{ item.price }} zł</b></p>
-        <p class="price-old">old price: {{ item.priceOld }} zł</p>
-        <button type="button" class="btn btn-success add-to-cart">Add to cart</button>
+        <a [title]="item.name" [routerLink]="['/c', currentCategory.id, 'p', item.id]">
+          <p class="description">
+            product description: {{ item.description }}
+          </p>
+        </a>
+        <p class="price">
+          <b>
+            price: {{ item.price }} zł
+          </b>
+        </p>
+        <p class="price-old">
+          old price: {{ item.priceOld }} zł
+        </p>
+        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id)">
+          Add to cart
+        </button>
       </div>
     </div>
   </li>

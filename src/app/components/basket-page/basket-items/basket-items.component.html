@@ -1,3 +1,37 @@
 <p>
   basket-items works!
 </p>
+<h2>Your cart content</h2>
+<br><br>
+<ul class="list-group product-list" >
+  <li class="list-group-item list-group-item-action product-list_item" *ngFor="let item of currentUserCart; let prodIndex= index">
+    <div class="row">
+      <div class="col-xs-3">
+        <a [title]="item.product[0].name">
+          <img [src]="item.product[0].images[0]" [alt]="item.product[0].name" class="img-responsive">
+        </a>
+      </div>
+      <div class="col-xs-9">
+        <a>
+          <h3>
+            {{ item.product[0].name }}
+          </h3>
+        </a>
+        <p class="rating">
+          product rating {{ item.product[0].rating }}
+        </p>
+        <p class="price">
+          <b>
+            price: {{ item.product[0].price }} zł
+          </b>
+        </p>
+        <p class="price-old">
+          old price: {{ item.product[0].priceOld }} zł
+        </p>
+        <button type="button" class="btn btn-success add-to-cart" (click)="removeFromCart(prodIndex)">
+          Remove from cart
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>

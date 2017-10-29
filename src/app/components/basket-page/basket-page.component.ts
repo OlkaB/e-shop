@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basket-page.component.css']
 })
 export class BasketPageComponent implements OnInit {
-
+  
   constructor() { }
-
+  
   ngOnInit() {
+    
   }
 
 }
