@@ -35,3 +35,8 @@
     </div>
   </li>
 </ul>
+<div class="list-group" *ngIf="currentUserCart.length===0">
+  <p class="list-group-item list-group-item-warning"><b>Twój koszyk jest pusty</b></p>
+  <br><br>
+  <button type="button" class="btn btn-info add-to-cart" [routerLink]="['']"><< Wróć do zakupów</button>
+</div>

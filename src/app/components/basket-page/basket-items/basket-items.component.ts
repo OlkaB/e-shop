@@ -17,7 +17,7 @@ export class BasketItemsComponent implements OnInit, OnDestroy {
     this.currentUserCart = this.currentUserDataService.getCartItems();
     this.cartDataSubscription = this.currentUserDataService.userCartChanged.subscribe((cartData: any) => {
       this.currentUserCart = cartData;
-      console.log("Subsciption data: ", this.currentUserCart)
+      console.log("Subsciption data: ", this.currentUserCart, " LENGTH: ", this.currentUserCart.length)
     });
   }
 
