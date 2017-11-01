@@ -3,7 +3,7 @@
 </p>
 <h2>Your cart content</h2>
 <br><br>
-<ul class="list-group product-list" >
+<ul class="list-group product-list">
   <li *ngFor="let item of currentUserCart; let prodIndex= index" class="list-group-item list-group-item-action product-list_item" [attr.data-id]="item | getCartItemData: 'product': 'id'">
 <div class="row">
   <div class="col-xs-3">
@@ -30,7 +30,7 @@
         price: {{ item | getCartItemData: 'product': 'price' }} zł
       </b>
     </p>
-    <p class="price-old">
+    <p class="price-old" *ngIf="showOldPrice(item)">
       old price: {{ item | getCartItemData: 'product': 'priceOld' }} zł
     </p>
     <button type="button" class="btn btn-success add-to-cart" (click)="removeFromCart(prodIndex)">

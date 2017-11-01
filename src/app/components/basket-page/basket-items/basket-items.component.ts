@@ -18,11 +18,8 @@ export class BasketItemsComponent implements OnInit, OnDestroy {
     this.cartDataSubscription = this.currentUserDataService.userCartChanged.subscribe((cartData: any) => {
       this.currentUserCart = cartData;
       console.log("Subsciption data: ", this.currentUserCart, " LENGTH: ", this.currentUserCart.length)
-    });
-    console.log('CART ITEMS: ', this.currentUserCart, " ITEM 1: ", this.currentUserCart[0]);
-    
+    });    
     let item = this.currentUserCart[0];
-    console.log('GET VAL: ', Object.keys(item)[0], item[Object.keys(item)[0]].amount);
   }
 
   removeFromCart(productId) {
@@ -32,6 +29,11 @@ export class BasketItemsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.cartDataSubscription.unsubscribe();
     //console.log("cart item destroyed");
+  }
+
+  showOldPrice(item) {
+    console.log("1. showOldPrice item: ", item);
+    return item[Object.keys(item)[0]]['product'][0]['priceOld'] > item[Object.keys(item)[0]]['product'][0]['price'];
   }
 
 }

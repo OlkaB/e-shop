@@ -12,7 +12,7 @@ export class CurrentUserDataService {
 
   constructor(private productsService: ProductsService) { }
 
-  addToCart(productId, amount, categoryId): void {
+  addToCart(productId, position, amount, categoryId): void {
     //console.log("Step0: check passed args: ", productId, amount);
     //console.log("Step0: check basketCurrentIds: ", this.basketProductsIds);
     //console.log("Step1: check basket length: ", this.userCartData.length);
@@ -41,7 +41,7 @@ export class CurrentUserDataService {
       }); 
       this.basketProductsIds.push(productId); 
     }
-    //console.log("Step7: check cart data: ", this.userCartData);
+    console.log("Step7: check cart data: ", this.userCartData);
     /* inform about changes in user cart data */
     this.userCartChanged.next(this.userCartData);
   }

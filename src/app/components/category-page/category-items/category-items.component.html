@@ -30,10 +30,11 @@
             price: {{ item.price }} zł
           </b>
         </p>
-        <p class="price-old">
+        <p class="price-old" *ngIf="item.priceOld > item.price">
           old price: {{ item.priceOld }} zł
         </p>
-        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position, currentCategory.id)">
+        <input type="number" name="addProductAmount" value="1" ref-addAmount class="amount">
+        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position, addAmount.value, currentCategory.id)">
           Add to cart
         </button>
       </div>
