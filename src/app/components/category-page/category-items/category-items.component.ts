@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgComponentOutlet } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CategoriesService } from '../../../services-and-models/categories.service';
 import { ProductsService } from '../../../services-and-models/products.service';
 import { CurrentUserDataService } from '../../../services-and-models/current-user-data.service';
+import { PopupAddToCartService } from '../../../services-and-models/popup-add-to-cart.service';
+import { AddBasketPopupComponent } from '../../a-shared-components/add-basket-popup/add-basket-popup.component';
 
 @Component({
   selector: 'app-category-items',
@@ -16,7 +19,8 @@ export class CategoryItemsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, 
               private categoriesService: CategoriesService,
               private productsService: ProductsService,
-              private currentUserDataService: CurrentUserDataService) { }
+              private currentUserDataService: CurrentUserDataService,
+              private popupAddToCartService: PopupAddToCartService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -27,12 +31,15 @@ export class CategoryItemsComponent implements OnInit {
         };
         this.currentCategoryProducts = this.productsService.getCategoryProducts(this.currentCategory.name)
     });
-    console.log("this.currentCategoryProducts: ", this.currentCategoryProducts);    
+    console.log("this.currentCategoryProducts: ", this.currentCategoryProducts);
   }
 
-  addToCart(productId) {
+  addToCart(productId, itemPosition) {
     this.currentUserDataService.addToCart(productId, 1);
+    this.popupAddToCartService.popUpDisplayVal.next('block');
+    this.popupAddToCartService.currentProductAdded.next(this.currentCategoryProducts[itemPosition]);
   }
 
 }
  
+

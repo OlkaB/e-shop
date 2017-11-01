@@ -30,7 +30,7 @@ export class ProductsService {
   constructor(private categoriesService: CategoriesService) { }
 
   getCategoryProducts(categoryId) {
-    console.log("Particular category (" + categoryId + ") products: ", this.allProducts[categoryId]);
+    //console.log("Particular category (" + categoryId + ") products: ", this.allProducts[categoryId]);
     return this.allProducts[categoryId].slice();
   }
 
@@ -47,7 +47,7 @@ export class ProductsService {
     for(let i = 0; i < mainCategoriesObj.length; i++) {
       let outcome = this.allProducts[mainCategoriesObj[i].name].filter(function(item) {
         //console.log("BASKET LOOP Step2_item: ", item);
-        console.log(i, ". BASKET LOOP Step3_data: searchedProductId_", searchedProductId, typeof searchedProductId, " loopedItemId_", item.id, typeof item.id);
+        //console.log(i, ". BASKET LOOP Step3_data: searchedProductId_", searchedProductId, typeof searchedProductId, " loopedItemId_", item.id, typeof item.id);
         return item.id == searchedProductId;
       });
       //console.log("OUTCOME: ", outcome);

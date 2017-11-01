@@ -1,3 +1,26 @@
-<p>
-  add-basket-popup works!
-</p>
+    <div class="modal-dialog" id="addToBasketPopUp" [ngStyle]="{display: popUpDisplayVal}" *ngIf="productToDisplay">    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" (click)="closePopUp()">×</button>
+          <h4 class="modal-title"><i class="glyphicon glyphicon-ok"></i>Product added to cart</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <img [src]="productToDisplay.images[0]" [alt]="productToDisplay.name" class="img-responsive">
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <h3>{{ productToDisplay.name }}</h3>
+              <p>Year: {{ productToDisplay.prodYear }}</p>
+              <p>Price: {{ productToDisplay.price }} PLN/{{ productToDisplay.stockUnit }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info pull-left" data-dismiss="modal" (click)="closePopUp()">Continue shopping</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" [routerLink]="['/cart']">Go to cart</button>
+        </div>
+      </div>
+      
+    </div>

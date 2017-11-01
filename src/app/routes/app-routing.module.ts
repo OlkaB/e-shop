@@ -11,7 +11,6 @@ import { ProductPageComponent } from '../components/product-page/product-page.co
 
 import { BasketPageComponent } from '../components/basket-page/basket-page.component';
   import { BasketItemsComponent } from '../components/basket-page/basket-items/basket-items.component';
-  import { EmptyBasketComponent } from '../components/basket-page/empty-basket/empty-basket.component';
 
 import { NotFoundPageComponent } from '../components/not-found-page/not-found-page.component';
 import { NoSearchResultPageComponent } from '../components/no-search-result-page/no-search-result-page.component';

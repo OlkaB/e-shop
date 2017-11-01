@@ -4,7 +4,7 @@
 <h2>Your cart content</h2>
 <br><br>
 <ul class="list-group product-list" >
-  <li class="list-group-item list-group-item-action product-list_item" *ngFor="let item of currentUserCart; let prodIndex= index">
+  <li class="list-group-item list-group-item-action product-list_item" *ngFor="let item of currentUserCart; let prodIndex= index" [attr.data-id]="item.product[0].id">
     <div class="row">
       <div class="col-xs-3">
         <a [title]="item.product[0].name">
@@ -35,8 +35,8 @@
     </div>
   </li>
 </ul>
-<div class="list-group" *ngIf="currentUserCart.length===0">
-  <p class="list-group-item list-group-item-warning"><b>Twój koszyk jest pusty</b></p>
+<div class="list-group emptyCart" *ngIf="currentUserCart.length===0">
+  <p class="list-group-item list-group-item-warning"><i class="glyphicon glyphicon-exclamation-sign"></i>Twój koszyk jest pusty</p>
   <br><br>
   <button type="button" class="btn btn-info add-to-cart" [routerLink]="['']"><< Wróć do zakupów</button>
 </div>

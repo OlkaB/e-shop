@@ -16,7 +16,7 @@ export class CurrentUserDataService {
       product: this.productsService.getProductByIdFromAllProds(productId),
       amount: amount
     });
-    console.log("ADD_Current cart data: ", this.userCartData);
+    //console.log("ADD_Current cart data: ", this.userCartData);
     /* inform about changes in user cart data */
     this.userCartChanged.next(this.userCartData);
   }
@@ -24,7 +24,7 @@ export class CurrentUserDataService {
   removeFromCart(indexToRemove): void {
     /* pass a place of item in cart arr, not a product id */
     this.userCartData.splice(indexToRemove, 1);
-    console.log("REMOVE_Current cart data: ", this.userCartData);
+    //console.log("REMOVE_Current cart data: ", this.userCartData);
     /* inform about changes in user cart data */
     this.userCartChanged.next(this.userCartData);
   }

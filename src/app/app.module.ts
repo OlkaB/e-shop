@@ -8,6 +8,7 @@ import { RoutingModule } from './routes/app-routing.module';
 import { ProductsService } from './services-and-models/products.service';
 import { CategoriesService } from './services-and-models/categories.service';
 import { CurrentUserDataService } from './services-and-models/current-user-data.service';
+import { PopupAddToCartService } from './services-and-models/popup-add-to-cart.service';
 
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
@@ -16,7 +17,6 @@ import { ProductPageComponent } from './components/product-page/product-page.com
   import { ProductDataComponent } from './components/product-page/product-data/product-data.component';
 import { BasketPageComponent } from './components/basket-page/basket-page.component';
   import { BasketItemsComponent } from './components/basket-page/basket-items/basket-items.component';
-  import { EmptyBasketComponent } from './components/basket-page/empty-basket/empty-basket.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { NoSearchResultPageComponent } from './components/no-search-result-page/no-search-result-page.component';
 import { PurchasePagesComponent } from './components/purchase-pages/purchase-pages.component';
@@ -42,7 +42,6 @@ import { AddBasketPopupComponent } from './components/a-shared-components/add-ba
     ProductDataComponent,
     BasketPageComponent,
     BasketItemsComponent,
-    EmptyBasketComponent,
     NotFoundPageComponent,
     NoSearchResultPageComponent,
     PurchasePagesComponent,
@@ -62,7 +61,8 @@ import { AddBasketPopupComponent } from './components/a-shared-components/add-ba
     HttpModule,
     RoutingModule
   ],
-  providers: [CategoriesService, ProductsService, CurrentUserDataService],
+  entryComponents: [AddBasketPopupComponent],
+  providers: [CategoriesService, ProductsService, CurrentUserDataService, PopupAddToCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

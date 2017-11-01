@@ -17,7 +17,7 @@ export class BasketItemsComponent implements OnInit, OnDestroy {
     this.currentUserCart = this.currentUserDataService.getCartItems();
     this.cartDataSubscription = this.currentUserDataService.userCartChanged.subscribe((cartData: any) => {
       this.currentUserCart = cartData;
-      console.log("Subsciption data: ", this.currentUserCart, " LENGTH: ", this.currentUserCart.length)
+      //console.log("Subsciption data: ", this.currentUserCart, " LENGTH: ", this.currentUserCart.length)
     });
   }
 
@@ -27,7 +27,7 @@ export class BasketItemsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.cartDataSubscription.unsubscribe();
-    console.log("cart item destroyed");
+    //console.log("cart item destroyed");
   }
 
 }
