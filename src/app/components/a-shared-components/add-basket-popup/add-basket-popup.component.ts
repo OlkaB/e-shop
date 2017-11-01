@@ -23,7 +23,7 @@ export class AddBasketPopupComponent implements OnInit, OnDestroy {
     this.popUpDataSubscription = this.popupAddToCartService.currentProductAdded.subscribe((productData: any) => {
       //console.log("POP UP productData passed: ", productData, typeof productData);
       this.productToDisplay = productData;
-      console.log("POP UP this.productToDisplay", this.productToDisplay);
+      //console.log("POP UP this.productToDisplay", this.productToDisplay);
     });    
   }
 

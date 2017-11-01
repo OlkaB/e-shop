@@ -30,6 +30,7 @@ import { FooterComponent } from './components/a-shared-components/footer/footer.
 import { HeaderComponent } from './components/a-shared-components/header/header.component';
 import { ProductRatingComponent } from './components/a-shared-components/product-rating/product-rating.component';
 import { AddBasketPopupComponent } from './components/a-shared-components/add-basket-popup/add-basket-popup.component';
+import { GetCartItemDataPipe } from './pipes/get-cart-item-data.pipe';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AddBasketPopupComponent } from './components/a-shared-components/add-ba
     FooterComponent,
     HeaderComponent,
     ProductRatingComponent,
-    AddBasketPopupComponent
+    AddBasketPopupComponent,
+    GetCartItemDataPipe
   ],
   imports: [
     BrowserModule,

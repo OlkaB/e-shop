@@ -31,11 +31,11 @@ export class CategoryItemsComponent implements OnInit {
         };
         this.currentCategoryProducts = this.productsService.getCategoryProducts(this.currentCategory.name)
     });
-    console.log("this.currentCategoryProducts: ", this.currentCategoryProducts);
+    //console.log("this.currentCategoryProducts: ", this.currentCategoryProducts);
   }
 
-  addToCart(productId, itemPosition) {
-    this.currentUserDataService.addToCart(productId, 1);
+  addToCart(productId, itemPosition, categoryId) {
+    this.currentUserDataService.addToCart(productId, 1, categoryId);
     this.popupAddToCartService.popUpDisplayVal.next('block');
     this.popupAddToCartService.currentProductAdded.next(this.currentCategoryProducts[itemPosition]);
   }

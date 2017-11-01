@@ -33,7 +33,7 @@
         <p class="price-old">
           old price: {{ item.priceOld }} zł
         </p>
-        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position)">
+        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position, currentCategory.id)">
           Add to cart
         </button>
       </div>
