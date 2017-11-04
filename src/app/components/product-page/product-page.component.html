@@ -17,13 +17,15 @@
         <form>
           <div class="row">
             <div class="col-xs-6">
-                <label>
-                  <input type="number" name="productAmount" value="1" class="add-to-cart-amount">
-                  &nbsp;&nbsp;{{ this.productActive[0].stockUnit }}
-                </label>
+              <p>Price: {{ this.productActive[0].price }}</p>
+              <p *ngIf="this.productActive[0].priceOld > this.productActive[0].price">Old price: {{ this.productActive[0].priceOld }}</p>
+              <label>
+                <input type="number" name="productAmount" value="1" class="add-to-cart-amount" ref-addAmount>
+                &nbsp;&nbsp;{{ this.productActive[0].stockUnit }}
+              </label>
             </div>
             <div class="col-xs-6">
-              <button class="btn btn-primary" type="button"><!-- [data-id]="this.productActive[0].id" Create attr directive  -->
+              <button class="btn btn-primary" type="button" (click)="addToCart(this.productActive[0].id, 1, addAmount.value, 0, this.productActive[0])">
                 Add to cart
               </button>
             </div>
@@ -41,5 +43,7 @@
         </p>
       </div>
     </div>
+    <app-product-data></app-product-data>
+    <app-add-basket-popup></app-add-basket-popup>
   </div>
 </div>

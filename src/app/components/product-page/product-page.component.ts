@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from '../../services-and-models/products.service';
+import { CurrentUserDataService } from '../../services-and-models/current-user-data.service';
+
 
 @Component({
   selector: 'app-product-page',
@@ -9,8 +11,11 @@ import { ProductsService } from '../../services-and-models/products.service';
 })
 export class ProductPageComponent implements OnInit {
   productActive;
+  currentCategoryId: number;
 
-  constructor(private activatedRoute: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(private activatedRoute: ActivatedRoute, 
+              private productsService: ProductsService,
+              private currentUserDataService: CurrentUserDataService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -21,6 +26,15 @@ export class ProductPageComponent implements OnInit {
         //console.log("Active product: ", this.productActive);
         //console.log("Active product img: ", this.productActive[0].images[0]);
     });
+    this.activatedRoute.params.subscribe((params: Params) => {
+        let catId = +params['catId'];
+        this.currentCategoryId = catId;
+    });
+  }
+
+  addToCart(productId, position, amount, categoryId, addedProduct) {
+     categoryId = this.currentCategoryId;
+     this.currentUserDataService.addToCart(productId, position, amount, categoryId, addedProduct);
   }
 
 }

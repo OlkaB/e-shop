@@ -34,7 +34,7 @@
           old price: {{ item.priceOld }} zł
         </p>
         <input type="number" name="addProductAmount" value="1" ref-addAmount class="amount">
-        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position, addAmount.value, currentCategory.id)">
+        <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position, addAmount.value, currentCategory.id, item)">
           Add to cart
         </button>
       </div>

@@ -34,11 +34,8 @@ export class CategoryItemsComponent implements OnInit {
     //console.log("this.currentCategoryProducts: ", this.currentCategoryProducts);
   }
 
-  addToCart(productId, itemPosition, amount, categoryId) {
-    console.log("AMOUNT: ", amount);
-    this.currentUserDataService.addToCart(productId, itemPosition, +amount, categoryId);
-    this.popupAddToCartService.popUpDisplayVal.next('block');
-    this.popupAddToCartService.currentProductAdded.next(this.currentCategoryProducts[itemPosition]);
+  addToCart(productId, productPositionOnPage, amount, categoryId, currentProductAllData) {
+    this.currentUserDataService.addToCart(productId, productPositionOnPage, +amount, categoryId, currentProductAllData);    
   }
 
 }

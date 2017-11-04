@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-data.component.css']
 })
 export class ProductDataComponent implements OnInit {
+  activeTab = "Description";
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  activateTab(activateTab) {
+    this.activeTab = activateTab;
   }
 
 }

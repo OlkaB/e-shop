@@ -1,3 +1,32 @@
-<p>
-  product-data works!
-</p>
+<ul class="nav nav-tabs">
+  <li (click)="activateTab('Description')" [ngClass]="{active: activeTab === 'Description'}">
+    <a data-toggle="tab">
+      Description
+    </a>
+  </li>
+  <li (click)="activateTab('Opinions')" [ngClass]="{active: activeTab === 'Opinions'}">
+    <a data-toggle="tab">
+      Opinions
+    </a>
+  </li>
+  <li (click)="activateTab('Also')" [ngClass]="{active: activeTab === 'Also'}">
+    <a data-toggle="tab">
+      You my also need
+    </a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="description" class="tab-pane fade" [ngClass]="{active: activeTab === 'Description', in: activeTab === 'Description'}">
+    <h3>Description</h3>
+    <p>Some content.</p>
+  </div>
+  <div id="opinions" class="tab-pane fade" [ngClass]="{active: activeTab === 'Opinions', in: activeTab === 'Opinions'}">
+    <h3>Opinions</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="also" class="tab-pane fade" [ngClass]="{active: activeTab === 'Also', in: activeTab === 'Also'}">
+    <h3>You my also need</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>

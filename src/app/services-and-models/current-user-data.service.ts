@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ProductsService } from './products.service';
 import { Subject } from 'rxjs/Subject';
+import { ProductsService } from './products.service';
+import { PopupAddToCartService } from './popup-add-to-cart.service';
 
 
 @Injectable()
@@ -10,10 +11,11 @@ export class CurrentUserDataService {
   /* to observe changes in user cart data */
   userCartChanged = new Subject();
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService,
+              private popupAddToCartService: PopupAddToCartService) { }
 
-  addToCart(productId, position, amount, categoryId): void {
-    //console.log("Step0: check passed args: ", productId, amount);
+  addToCart(productId, position, amount, categoryId, addedProduct): void {
+    console.log("Step0: check passed args: ", productId, position, amount, categoryId, addedProduct);
     //console.log("Step0: check basketCurrentIds: ", this.basketProductsIds);
     //console.log("Step1: check basket length: ", this.userCartData.length);
     //console.log("Step2: check control arr: ", this.basketProductsIds);
@@ -44,6 +46,9 @@ export class CurrentUserDataService {
     console.log("Step7: check cart data: ", this.userCartData);
     /* inform about changes in user cart data */
     this.userCartChanged.next(this.userCartData);
+    /* show pop up */
+    this.popupAddToCartService.popUpDisplayVal.next('block');
+    this.popupAddToCartService.currentProductAdded.next(addedProduct);
   }
 
   removeFromCart(indexToRemove): void {
