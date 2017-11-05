@@ -18,3 +18,23 @@
 .glyphicon-star {
   text-shadow: 0.5px 0.5px 1px grey;
 }
+
+.opinions .opinionTxt {
+  clear:  left;
+}
+
+.userOpinionForm label {
+  width:  110px;
+}
+
+.userOpinionForm input, .userOpinionForm textarea {
+  width:  60%;
+}
+
+.userOpinionForm button {
+  margin-left:  115px;
+}
+
+.noOpinionsInfo { 
+  margin-top:  40px; 
+}

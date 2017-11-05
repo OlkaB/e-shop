@@ -10,6 +10,7 @@ export class ProductDataComponent implements OnInit {
   @Input() productActive;
   activeTab = "Description";
   productOpinions;
+  stars = [1,2,3,4,5];
   starRating = {
     star1: 'glyphicon-star-empty',
     star2: 'glyphicon-star-empty',
@@ -28,7 +29,9 @@ export class ProductDataComponent implements OnInit {
   constructor(private productsOpinionsService: ProductsOpinionsService) { }
 
   ngOnInit() {
-    this.productOpinions = this.productsOpinionsService.getParticularProductOpinions(this.productActive[0].id)[0].opinion; 
+    if(this.productsOpinionsService.getParticularProductOpinions(this.productActive[0].id).length > 0){
+      this.productOpinions = this.productsOpinionsService.getParticularProductOpinions(this.productActive[0].id)[0].opinion; 
+    }    
     //console.warn(this.productOpinions, typeof this.productOpinions, this.productOpinions.length);
   }
 

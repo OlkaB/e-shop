@@ -7,8 +7,8 @@ import { AllProductsModel, CarModel, PartModel, MechanicServiceModel, EngineMode
 export class ProductsService {
   allProducts: AllProductsModel = new AllProductsModel (
     [
-      new CarModel('1_0001', 'garbus', 1765, 'T3-DM', 'Pb', 12506, 'lorem ipsum', ['http://i.iplsc.com/wszystkie-garbusy-maja-czterocylindrowy-silnik-bokser-umiesz/0001S9B7G7NQN5SH-C116-F4.jpg', 'https://spplthumb.blob.core.windows.net/1000x901c/08/ee/e1/volkswagen-garbus-sportowy-coupe-sprzedam-345308322.jpg'], ['VW', 'oldTimer'], 3, 'pcs', 12000, 15000, 'VW', 4.5, ['very good', 'fantastic']),
-      new CarModel('10002', 'mercedes', 2010, 'TDI', 'Diesel', 50365, 'lorem ipsum dolor sit', ['https://media.ed.edmunds-media.com/mercedes-benz/s-class/2010/oem/2010_mercedes-benz_s-class_sedan_s600_fq_oem_1_500.jpg', 'http://s3.caradvice.com.au/thumb/770/382/wp-content/uploads/2010/04/2010-Mercedes-Benz-C-Class.jpg'], ['Mercedes', 'lux'], 5, 'pcs', 65000, 0, 'Mercedes', 3.5, ['not bad', 'it\'s ok'])
+      new CarModel('1_0001', 'garbus', 1765, 'T3-DM', 'Pb', 12506, 'lorem ipsum', ['http://i.iplsc.com/wszystkie-garbusy-maja-czterocylindrowy-silnik-bokser-umiesz/0001S9B7G7NQN5SH-C116-F4.jpg', 'https://spplthumb.blob.core.windows.net/1000x901c/08/ee/e1/volkswagen-garbus-sportowy-coupe-sprzedam-345308322.jpg'], ['VW', 'oldTimer'], 3, 'pcs', 12000, 15000, 'VW', 4, ['very good', 'fantastic']),
+      new CarModel('10002', 'mercedes', 2010, 'TDI', 'Diesel', 50365, 'lorem ipsum dolor sit', ['https://media.ed.edmunds-media.com/mercedes-benz/s-class/2010/oem/2010_mercedes-benz_s-class_sedan_s600_fq_oem_1_500.jpg', 'http://s3.caradvice.com.au/thumb/770/382/wp-content/uploads/2010/04/2010-Mercedes-Benz-C-Class.jpg'], ['Mercedes', 'lux'], 5, 'pcs', 65000, 0, 'Mercedes', 3, ['not bad', 'it\'s ok'])
     ],
     [
       new PartModel('2_00001', 'screwdriver', 'lorem lorem ipsum ipsum', ['https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Screw_Driver_display.jpg/1200px-Screw_Driver_display.jpg'], ['tools'], 50, 'pc', 50.5, 0, 'Bosh', 2, ['broken after first use', 'it\'s ok']),

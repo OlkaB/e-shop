@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routes/app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 /* services */
 import { ProductsService } from './services-and-models/products.service';
@@ -74,7 +75,8 @@ import { AddOpinionComponent } from './components/product-page/product-data/add-
   imports: [
     BrowserModule,
     HttpModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
   entryComponents: [AddBasketPopupComponent],
   providers: [
