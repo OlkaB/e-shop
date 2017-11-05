@@ -33,17 +33,7 @@
         </form>
       </div>
     </div>
-    <div class="row product-description">
-      <div class="col-xs-12">
-        <h3>
-            Product description
-        </h3>
-        <p>
-          {{ this.productActive[0].description }}
-        </p>
-      </div>
-    </div>
-    <app-product-data></app-product-data>
+    <app-product-data [productActive]="productActive"></app-product-data>
     <app-add-basket-popup></app-add-basket-popup>
   </div>
 </div>

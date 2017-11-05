@@ -1,15 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routes/app-routing.module';
 
+/* services */
 import { ProductsService } from './services-and-models/products.service';
 import { CategoriesService } from './services-and-models/categories.service';
 import { CurrentUserDataService } from './services-and-models/current-user-data.service';
 import { PopupAddToCartService } from './services-and-models/popup-add-to-cart.service';
+import { ProductsOpinionsService } from './services-and-models/products-opinions.service';
+import { StarRatingService } from './services-and-models/star-rating.service';
 
+/* components */
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
   import { CategoryItemsComponent } from './components/category-page/category-items/category-items.component';
@@ -30,8 +33,14 @@ import { FooterComponent } from './components/a-shared-components/footer/footer.
 import { HeaderComponent } from './components/a-shared-components/header/header.component';
 import { ProductRatingComponent } from './components/a-shared-components/product-rating/product-rating.component';
 import { AddBasketPopupComponent } from './components/a-shared-components/add-basket-popup/add-basket-popup.component';
+
+/* pipes */
 import { GetCartItemDataPipe } from './pipes/get-cart-item-data.pipe';
 import { ShowOldPriceConditionPipe } from './pipes/show-old-price-condition.pipe';
+
+/* directives */
+import { StarRatingDirective } from './directives/star-rating.directive';
+import { AddOpinionComponent } from './components/product-page/product-data/add-opinion/add-opinion.component';
 
 
 @NgModule({
@@ -58,7 +67,9 @@ import { ShowOldPriceConditionPipe } from './pipes/show-old-price-condition.pipe
     ProductRatingComponent,
     AddBasketPopupComponent,
     GetCartItemDataPipe,
-    ShowOldPriceConditionPipe
+    ShowOldPriceConditionPipe,
+    StarRatingDirective,
+    AddOpinionComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +77,14 @@ import { ShowOldPriceConditionPipe } from './pipes/show-old-price-condition.pipe
     RoutingModule
   ],
   entryComponents: [AddBasketPopupComponent],
-  providers: [CategoriesService, ProductsService, CurrentUserDataService, PopupAddToCartService],
+  providers: [
+    CategoriesService, 
+    ProductsService, 
+    CurrentUserDataService, 
+    PopupAddToCartService,
+    ProductsOpinionsService,
+    StarRatingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

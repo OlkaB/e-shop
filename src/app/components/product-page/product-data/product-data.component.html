@@ -1,32 +1,67 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs product-data-tabs">
   <li (click)="activateTab('Description')" [ngClass]="{active: activeTab === 'Description'}">
-    <a data-toggle="tab">
+    <a>
       Description
     </a>
   </li>
   <li (click)="activateTab('Opinions')" [ngClass]="{active: activeTab === 'Opinions'}">
-    <a data-toggle="tab">
+    <a>
       Opinions
     </a>
   </li>
   <li (click)="activateTab('Also')" [ngClass]="{active: activeTab === 'Also'}">
-    <a data-toggle="tab">
+    <a>
       You my also need
     </a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div id="description" class="tab-pane fade" [ngClass]="{active: activeTab === 'Description', in: activeTab === 'Description'}">
-    <h3>Description</h3>
-    <p>Some content.</p>
+  <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Description', in: activeTab === 'Description'}">
+    <p> {{ productActive[0].description }}</p>
   </div>
-  <div id="opinions" class="tab-pane fade" [ngClass]="{active: activeTab === 'Opinions', in: activeTab === 'Opinions'}">
-    <h3>Opinions</h3>
-    <p>Some content in menu 1.</p>
+  <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Opinions', in: activeTab === 'Opinions'}">
+    <div class="col-xs-12">
+      <div class="starRating">
+        <i class="glyphicon {{starRating.star1}}"
+          (mouseenter)="hoverOnStar(1)" 
+          (mouseleave)="hoverOffStar(1)" 
+          (click)="starRate(1)">            
+        </i>
+        <i class="glyphicon {{starRating.star2}}" 
+          (mouseenter)="hoverOnStar(2)" 
+          (mouseleave)="hoverOffStar(2)"
+          (click)="starRate(2)">            
+        </i>
+        <i class="glyphicon {{starRating.star3}}"
+          (mouseenter)="hoverOnStar(3)" 
+          (mouseleave)="hoverOffStar(3)" 
+          (click)="starRate(3)">            
+        </i>
+        <i class="glyphicon {{starRating.star4}}"
+          (mouseenter)="hoverOnStar(4)" 
+          (mouseleave)="hoverOffStar(4)" 
+          (click)="starRate(4)">            
+        </i>
+        <i class="glyphicon {{starRating.star5}}"
+          (mouseenter)="hoverOnStar(5)" 
+          (mouseleave)="hoverOffStar(5)" 
+          (click)="starRate(5)">            
+        </i>
+      </div>
+<hr>
+      <div class="opinions" *ngFor="let opinion of productOpinions">
+        <h3>{{ opinion.title }} <span>rating {{opinion.rating}}</span></h3>
+        <p>{{ opinion.opinionTxt }}</p>
+        <p>Author: {{ opinion.author }} &nbsp;&nbsp;&nbsp;&nbsp; 
+           Publish date: {{ opinion.datePublish }} &nbsp;&nbsp;&nbsp;&nbsp; 
+           Opinion id: {{ opinion.opinionId }}</p>
+        <hr>
+      </div>
+    </div>
   </div>
-  <div id="also" class="tab-pane fade" [ngClass]="{active: activeTab === 'Also', in: activeTab === 'Also'}">
+  <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Also', in: activeTab === 'Also'}">
     <h3>You my also need</h3>
-    <p>Some content in menu 2.</p>
+    <p>Some content in tab 2.</p>
   </div>
 </div>
