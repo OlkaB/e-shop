@@ -28,6 +28,7 @@ export class ProductPageComponent implements OnInit {
         //console.log("Active product img: ", this.productActive[0].images[0]);
     });
     this.activatedRoute.params.subscribe((params: Params) => {
+        console.log("PARAMS: ", params);
         let catId = +params['catId'];
         this.currentCategoryId = catId;
     });

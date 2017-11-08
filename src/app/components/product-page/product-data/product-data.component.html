@@ -27,7 +27,7 @@
   <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Opinions', in: activeTab === 'Opinions'}">
     <div class="col-xs-12">
       <!-- add new opinion -->
-      <form class="userOpinionForm" (ngSubmit)="submitOpinion(opinionFormData)" #opinionFormData="ngForm">
+      <form class="userOpinionForm" *ngIf="addOpinionMode" (ngSubmit)="submitOpinion(opinionFormData)" #opinionFormData="ngForm">
         <h2>Add your opinion about this {{productActive[0]['name']}}</h2>
         <div class="form-group">
           <label for="opinionTitle">
@@ -62,11 +62,11 @@
           <input type="email" ngModel name="email">
         </div>
         <button class="btn btn-success" type="submit">Add opinion</button>
+        <hr>
       </form>
 
       <!-- see others opinions -->
       <div class="opinionsContainer" *ngIf="productOpinions">
-        <hr>
         <h2>Other users' opinions:</h2>
         <div class="opinions" *ngFor="let opinion of productOpinions">
           <h3>{{ opinion.title }}</h3>
@@ -74,14 +74,21 @@
             <i *ngFor="let star of stars; let i = index" class="starItem" class="glyphicon {{ i < opinion.rating ? 'glyphicon-star' : 'glyphicon-star-empty' }}"></i>
           </div>
           <p class="opinionTxt">{{ opinion.opinionTxt }}</p>
-          <p class="opinionIds">Author: <b>{{ opinion.author }}</b> &nbsp;&nbsp;&nbsp;&nbsp; 
+          <p class="opinionIds">
+            Author: <b>{{ opinion.author }}</b> &nbsp;&nbsp;&nbsp;&nbsp; 
             Publish date: {{ opinion.datePublish }} &nbsp;&nbsp;&nbsp;&nbsp; 
-          Opinion id: {{ opinion.opinionId }}</p>
+            Opinion id: {{ opinion.opinionId }}
+          </p>
           <hr>
         </div>
       </div>
       <p class="noOpinionsInfo" *ngIf="!productOpinions">
-        <i>No opinions added yet. You can help other users by adding your own</i>
+        <i>
+          No opinions added yet. You can help other users by adding your own.
+        </i>
+        <a class="addOpinion" [routerLink]="[]" [fragment]="'addOpinion'" *ngIf="!addOpinionMode">
+          Add opinion
+        </a>
       </p>
     </div>
   </div>

@@ -16,7 +16,7 @@
         </h2>
         <div class="opinionRating">
             <i *ngFor="let star of stars; let i = index" class="starItem" class="glyphicon {{ i < this.productActive[0].rating ? 'glyphicon-star' : 'glyphicon-star-empty' }}"></i>
-            <a class="addOpinion">Oceń produkt</a>
+            <a class="addOpinion" [routerLink]="[]" [fragment]="'addOpinion'">Rate product</a>
         </div>
         <form>
           <div class="row">
