@@ -34,4 +34,14 @@ export class ProductsOpinionsService {
     //console.log("THIS product OPINIONS: ", particularProductOpinions)
     return particularProductOpinions;
   }
+
+  addOpinionToProduct(productId, opinion) {
+    for(let i = 0; i < this.productsOpinions.length; i++) {
+      if(this.productsOpinions[i]['productId'] === productId) {
+        //console.log("CHOSEN PRODUCT: ", this.productsOpinions[i]['opinion']);
+        this.productsOpinions[i]['opinion'].push(opinion);
+        //console.log("CHOSEN PRODUCT WITH NEW OPINION: ", this.productsOpinions[i]['opinion']);
+      }
+    }
+  }
 }

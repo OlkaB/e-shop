@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ProductsOpinionsService } from '../../../services-and-models/products-opinions.service';
+import { OpinionModel } from '../../../services-and-models/products-opinions.model';
 
 @Component({
   selector: 'app-product-data',
@@ -12,19 +14,20 @@ export class ProductDataComponent implements OnInit {
   productOpinions;
   stars = [1,2,3,4,5];
   starRating = {
-    star1: 'glyphicon-star-empty',
-    star2: 'glyphicon-star-empty',
-    star3: 'glyphicon-star-empty',
-    star4: 'glyphicon-star-empty',
-    star5: 'glyphicon-star-empty',
+    0: 'glyphicon-star-empty',
+    1: 'glyphicon-star-empty',
+    2: 'glyphicon-star-empty',
+    3: 'glyphicon-star-empty',
+    4: 'glyphicon-star-empty',
   }
   starRatingBeforeHover = {
-    star1: 'glyphicon-star-empty',
-    star2: 'glyphicon-star-empty',
-    star3: 'glyphicon-star-empty',
-    star4: 'glyphicon-star-empty',
-    star5: 'glyphicon-star-empty',
+    0: 'glyphicon-star-empty',
+    1: 'glyphicon-star-empty',
+    2: 'glyphicon-star-empty',
+    3: 'glyphicon-star-empty',
+    4: 'glyphicon-star-empty',
   }
+  userOpinionRating;
 
   constructor(private productsOpinionsService: ProductsOpinionsService) { }
 
@@ -35,12 +38,12 @@ export class ProductDataComponent implements OnInit {
     //console.warn(this.productOpinions, typeof this.productOpinions, this.productOpinions.length);
   }
 
-  activateTab(activateTab) {
+  activateTab(activateTab): void {
     this.activeTab = activateTab;
   }
 
-  hoverOnStar(starNo) {
-    let i = 1;
+  hoverOnStar(starNo): void {
+    let i = 0;
     for(let key in this.starRating) { 
       this.starRatingBeforeHover[key] = this.starRating[key];     
       i <= starNo ? this.starRating[key] = 'glyphicon-star' : this.starRating[key] = 'glyphicon-star-empty';        
@@ -48,19 +51,33 @@ export class ProductDataComponent implements OnInit {
     }
   }
 
-  hoverOffStar(starNo) {
+  hoverOffStar(starNo): void {
     for(let key in this.starRating) {      
       this.starRating[key] = this.starRatingBeforeHover[key];
     }
   }
 
-  starRate(starNo) {
-    let i = 1;
+  starRate(starNo): void {
+    let i = 0;
     for(let key in this.starRating) {
       i <= starNo ? this.starRating[key] = 'glyphicon-star' : this.starRating[key] = 'glyphicon-star-empty'; 
       this.starRatingBeforeHover[key] = this.starRating[key];   
       i++;    
     }
+    this.userOpinionRating = starNo+1;
+    console.log("current star rating: ", this.userOpinionRating);
+  }
+
+  submitOpinion(formData: NgForm) {
+    console.log(formData);
+    let date = new Date();
+    let month = date.getMonth().toString().length === 1 ? "0" + date.getMonth() : date.getMonth();
+    let day = date.getDay().toString().length === 1 ? "0" + date.getDay() : date.getDay();
+    let today = date.getFullYear() + '-' + month + '-' + day;
+    let opinionId = this.productActive[0]['id'] + '_' + (this.productActive[0]['opinions'].length + 1);
+    let opinion = new OpinionModel(formData.value.userName, opinionId, this.userOpinionRating, formData.value.opinionTitle, formData.value.opinionText, today);
+    console.log("new opinion: ", opinion);
+    this.productsOpinionsService.addOpinionToProduct(this.productActive[0]['id'], opinion);
   }
 
 }

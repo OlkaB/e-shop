@@ -42,6 +42,7 @@ import { ShowOldPriceConditionPipe } from './pipes/show-old-price-condition.pipe
 /* directives */
 import { StarRatingDirective } from './directives/star-rating.directive';
 import { AddOpinionComponent } from './components/product-page/product-data/add-opinion/add-opinion.component';
+import { FormatPricePipe } from './pipes/format-price.pipe';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { AddOpinionComponent } from './components/product-page/product-data/add-
     GetCartItemDataPipe,
     ShowOldPriceConditionPipe,
     StarRatingDirective,
-    AddOpinionComponent
+    AddOpinionComponent,
+    FormatPricePipe
   ],
   imports: [
     BrowserModule,

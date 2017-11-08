@@ -19,7 +19,9 @@
             {{ item.name }}, id: {{ item.id }}
           </h3>
         </a>
-        <p class="rating">product rating {{ item.rating }}</p>
+        <div class="opinionRating">
+            <i *ngFor="let star of stars; let i = index" class="starItem" class="glyphicon {{ i < item.rating ? 'glyphicon-star' : 'glyphicon-star-empty' }}"></i>
+        </div>
         <a [title]="item.name" [routerLink]="['/c', currentCategory.id, 'p', item.id]">
           <p class="description">
             product description: {{ item.description }}
@@ -27,11 +29,11 @@
         </a>
         <p class="price">
           <b>
-            price: {{ item.price }} zł
+            price: {{ item.price | formatPrice }}
           </b>
         </p>
         <p class="price-old" *ngIf="item.priceOld > item.price">
-          old price: {{ item.priceOld }} zł
+          old price: <span>{{ item.priceOld | formatPrice }}</span>
         </p>
         <input type="number" name="addProductAmount" value="1" ref-addAmount class="amount">
         <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(item.id, position, addAmount.value, currentCategory.id, item)">

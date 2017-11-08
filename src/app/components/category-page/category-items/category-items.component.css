@@ -8,8 +8,11 @@
 
 .product-list_item .price-old {
   float:  left;
-  text-decoration: line-through;
   margin: 0 20px;
+}
+
+.product-list_item .price-old > span {
+  text-decoration: line-through;
 }
 
 .product-list_item .amount {

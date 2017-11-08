@@ -14,11 +14,15 @@
         <h2>
           {{ this.productActive[0].name }}
         </h2>
+        <div class="opinionRating">
+            <i *ngFor="let star of stars; let i = index" class="starItem" class="glyphicon {{ i < this.productActive[0].rating ? 'glyphicon-star' : 'glyphicon-star-empty' }}"></i>
+            <a class="addOpinion">Oceń produkt</a>
+        </div>
         <form>
           <div class="row">
-            <div class="col-xs-6">
-              <p>Price: {{ this.productActive[0].price }}</p>
-              <p *ngIf="this.productActive[0].priceOld > this.productActive[0].price">Old price: {{ this.productActive[0].priceOld }}</p>
+            <div class="col-xs-6 prices">
+              <p class="price">Price: {{ this.productActive[0].price | formatPrice }}</p>
+              <p class="oldPrice" *ngIf="this.productActive[0].priceOld > this.productActive[0].price">Old price: <span>{{ this.productActive[0].priceOld | formatPrice }}</span></p>
               <label>
                 <input type="number" name="productAmount" value="1" class="add-to-cart-amount" ref-addAmount>
                 &nbsp;&nbsp;{{ this.productActive[0].stockUnit }}

@@ -1,3 +1,13 @@
 .product-data {
   min-height:  300px;
 }
+
+.prices .oldPrice > span {
+  text-decoration: line-through;
+}
+
+.opinionRating .addOpinion {
+  margin-left: 20px;
+  font-size: 11px;
+  cursor: pointer;
+}

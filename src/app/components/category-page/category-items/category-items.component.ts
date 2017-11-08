@@ -15,6 +15,7 @@ import { AddBasketPopupComponent } from '../../a-shared-components/add-basket-po
 export class CategoryItemsComponent implements OnInit {
   currentCategory: {id: number, name: string};
   currentCategoryProducts;
+  stars= [1,2,3,4,5];
 
   constructor(private activatedRoute: ActivatedRoute, 
               private categoriesService: CategoriesService,

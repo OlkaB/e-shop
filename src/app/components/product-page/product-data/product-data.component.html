@@ -1,3 +1,4 @@
+<!-- TABS HEADER -->
 <ul class="nav nav-tabs product-data-tabs">
   <li (click)="activateTab('Description')" [ngClass]="{active: activeTab === 'Description'}">
     <a>
@@ -16,66 +17,57 @@
   </li>
 </ul>
 
+<!-- TABS CONTENT -->
 <div class="tab-content">
+  <!-- TAB 1 CONTENT_product description -->
   <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Description', in: activeTab === 'Description'}">
     <p> {{ productActive[0].description }}</p>
   </div>
+  <!-- TAB 2 CONTENT_opinions -->
   <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Opinions', in: activeTab === 'Opinions'}">
     <div class="col-xs-12">
-      <form class="userOpinionForm" (ngSubmit)="submitOpinion(opinionFormData)" #opinionFormData>
+      <!-- add new opinion -->
+      <form class="userOpinionForm" (ngSubmit)="submitOpinion(opinionFormData)" #opinionFormData="ngForm">
         <h2>Add your opinion about this {{productActive[0]['name']}}</h2>
         <div class="form-group">
           <label for="opinionTitle">
             Opinion title:
           </label>
-          <input type="text" name="opinionTitle" id="opinionTitle" ngModel>
+          <input type="text" ngModel name="opinionTitle">
         </div>
         <div class="form-group">
           <label for="opinionText">
             Your comment:
           </label>
-          <textarea name="opinionText" id="opinionText" cols="30" rows="5" ngModel>
+          <textarea cols="30" rows="5" ngModel name="opinionText">
           </textarea>
         </div>
         <div class="starRating">
-          <label>Mark your rating (temp):</label>
-          <i class="glyphicon {{starRating.star1}}"
-          (mouseenter)="hoverOnStar(1)" 
-          (mouseleave)="hoverOffStar(1)" 
-          (click)="starRate(1)"></i>
-          <i class="glyphicon {{starRating.star2}}" 
-          (mouseenter)="hoverOnStar(2)" 
-          (mouseleave)="hoverOffStar(2)"
-          (click)="starRate(2)"></i>
-          <i class="glyphicon {{starRating.star3}}"
-          (mouseenter)="hoverOnStar(3)" 
-          (mouseleave)="hoverOffStar(3)" 
-          (click)="starRate(3)"></i>
-          <i class="glyphicon {{starRating.star4}}"
-          (mouseenter)="hoverOnStar(4)" 
-          (mouseleave)="hoverOffStar(4)" 
-          (click)="starRate(4)"></i>
-          <i class="glyphicon {{starRating.star5}}"
-          (mouseenter)="hoverOnStar(5)" 
-          (mouseleave)="hoverOffStar(5)" 
-          (click)="starRate(5)"></i>
+          <label>Your rating:</label>
+          <i *ngFor="let star of stars; let j=index" class="glyphicon {{starRating[j]}}"
+          (mouseenter)="hoverOnStar(j)" 
+          (mouseleave)="hoverOffStar(j)" 
+          (click)="starRate(j)"></i>
         </div>
         <div class="form-group">
           <label>
             UserName:
           </label>
-          <input type="text" name="userName" ngModel>
+          <input type="text" ngModel name="userName">
         </div>
         <div class="form-group">
           <label>
             Your e-mail:
           </label>
-          <input type="email" name="email" ngModel>
+          <input type="email" ngModel name="email">
         </div>
-        <button class="btn btn-success" type="button">Add opinion</button>
+        <button class="btn btn-success" type="submit">Add opinion</button>
       </form>
+
+      <!-- see others opinions -->
       <div class="opinionsContainer" *ngIf="productOpinions">
         <hr>
+        <h2>Other users' opinions:</h2>
         <div class="opinions" *ngFor="let opinion of productOpinions">
           <h3>{{ opinion.title }}</h3>
           <div class="opinionRating">
@@ -83,20 +75,19 @@
           </div>
           <p class="opinionTxt">{{ opinion.opinionTxt }}</p>
           <p class="opinionIds">Author: <b>{{ opinion.author }}</b> &nbsp;&nbsp;&nbsp;&nbsp; 
-           Publish date: {{ opinion.datePublish }} &nbsp;&nbsp;&nbsp;&nbsp; 
-         Opinion id: {{ opinion.opinionId }}</p>
-         <hr>
-       </div>
-     </div>
-     <p class="noOpinionsInfo" *ngIf="!productOpinions">
-      <i>No opinions added yet. You can help other users by adding your own</i>
-    </p>
+            Publish date: {{ opinion.datePublish }} &nbsp;&nbsp;&nbsp;&nbsp; 
+          Opinion id: {{ opinion.opinionId }}</p>
+          <hr>
+        </div>
+      </div>
+      <p class="noOpinionsInfo" *ngIf="!productOpinions">
+        <i>No opinions added yet. You can help other users by adding your own</i>
+      </p>
+    </div>
   </div>
-</div>
-
-<div class="tab-pane fade" [ngClass]="{active: activeTab === 'Also', in: activeTab === 'Also'}">
-  <h3>You my also need</h3>
-  <p>Some content in tab 2.</p>
-</div>
-
+  <!-- TAB 3 CONTENT_sth else... cross sell/ recommendations -->
+  <div class="tab-pane fade" [ngClass]="{active: activeTab === 'Also', in: activeTab === 'Also'}">
+    <h3>You my also need</h3>
+    <p>Some content in tab 2.</p>
+  </div>
 </div>

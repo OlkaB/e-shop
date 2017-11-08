@@ -12,6 +12,7 @@ import { CurrentUserDataService } from '../../services-and-models/current-user-d
 export class ProductPageComponent implements OnInit {
   productActive;
   currentCategoryId: number;
+  stars = [1,2,3,4,5];
 
   constructor(private activatedRoute: ActivatedRoute, 
               private productsService: ProductsService,

@@ -7,8 +7,4 @@ export class StarRatingService {
 
   constructor() { }
 
-  hoverStar(event, starNo){
-    console.warn("HOVER STAR EVENT: ", event, "\nSTAR REFERECE: ", starNo);
-  }
-
 }

@@ -7,3 +7,11 @@
   width:  60px;
   font-size: 1.8rem;
 }
+
+.glyphicon-star, .glyphicon-star-empty {
+  color: #eee800;
+}
+
+.glyphicon-star {
+  text-shadow: 0.5px 0.5px 1px grey;
+}
