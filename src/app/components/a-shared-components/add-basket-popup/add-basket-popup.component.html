@@ -12,8 +12,7 @@
             </div>
             <div class="col-xs-12 col-sm-8">
               <h3>{{ productToDisplay.name }}</h3>
-              <p>Year: {{ productToDisplay.prodYear }}</p>
-              <p>Price: {{ productToDisplay.price }} PLN/{{ productToDisplay.stockUnit }}</p>
+              <p>Price: {{ productToDisplay.price | formatPrice }} PLN <span *ngIf="productToDisplay.stockUnit">/ {{ productToDisplay.stockUnit }}</span></p>
             </div>
           </div>
         </div>

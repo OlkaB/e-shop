@@ -22,7 +22,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { BasketPageComponent } from './components/basket-page/basket-page.component';
   import { BasketItemsComponent } from './components/basket-page/basket-items/basket-items.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
-import { NoSearchResultPageComponent } from './components/no-search-result-page/no-search-result-page.component';
+import { SearchResultPageComponent } from './components/search-result-page/search-result-page.component';
 import { PurchasePagesComponent } from './components/purchase-pages/purchase-pages.component';
   import { UserDataComponent } from './components/purchase-pages/user-data/user-data.component';
   import { PaymentSettingsComponent } from './components/purchase-pages/payment-settings/payment-settings.component';
@@ -41,7 +41,6 @@ import { ShowOldPriceConditionPipe } from './pipes/show-old-price-condition.pipe
 
 /* directives */
 import { StarRatingDirective } from './directives/star-rating.directive';
-import { AddOpinionComponent } from './components/product-page/product-data/add-opinion/add-opinion.component';
 import { FormatPricePipe } from './pipes/format-price.pipe';
 
 
@@ -56,7 +55,7 @@ import { FormatPricePipe } from './pipes/format-price.pipe';
     BasketPageComponent,
     BasketItemsComponent,
     NotFoundPageComponent,
-    NoSearchResultPageComponent,
+    SearchResultPageComponent,
     PurchasePagesComponent,
     UserDataComponent,
     PaymentSettingsComponent,
@@ -71,7 +70,6 @@ import { FormatPricePipe } from './pipes/format-price.pipe';
     GetCartItemDataPipe,
     ShowOldPriceConditionPipe,
     StarRatingDirective,
-    AddOpinionComponent,
     FormatPricePipe
   ],
   imports: [

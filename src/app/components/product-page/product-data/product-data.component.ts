@@ -88,9 +88,21 @@ export class ProductDataComponent implements OnInit {
     let opinion = new OpinionModel(formData.value.userName, opinionId, this.userOpinionRating, formData.value.opinionTitle, formData.value.opinionText, today);
     //console.log("new opinion: ", opinion);
     this.productsOpinionsService.addOpinionToProduct(this.productActive[0]['id'], opinion);
+    
+    /* show User action done */
     alert("Thank you - your opinion has been sent.");
+    
     /*remove 'opinionAddingMode' route fragment */
     this.router.navigate([]);
+
+    /* reset star rating */
+    this.starRating = {
+      0: 'glyphicon-star-empty',
+      1: 'glyphicon-star-empty',
+      2: 'glyphicon-star-empty',
+      3: 'glyphicon-star-empty',
+      4: 'glyphicon-star-empty',
+    }
   }
 
 }
