@@ -7,7 +7,6 @@ export class GetCartItemDataPipe implements PipeTransform {
 
   transform(value: any, mainProperty: string, subProperty: string, subPropArrayPos: number): any {
     //console.log("PIPE args: value: ", value, "\nmainProperty: ", mainProperty, "\nsubProperty: ", subProperty, "\nsubPropArrayPos: ", subPropArrayPos);
-
     let objectDeeper = value[Object.keys(value)[0]][mainProperty];
 
     if(subProperty !== undefined) {

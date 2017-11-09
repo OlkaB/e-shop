@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesService } from '../../../services-and-models/categories.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
   mainCategories = this.categoriesService.mainCategories;
   navBarReveal = false;
   
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(private categoriesService: CategoriesService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,4 +21,7 @@ export class HeaderComponent implements OnInit {
     return this.navBarReveal = !this.navBarReveal;
   }
 
+  submitSearchQuery(formData) {
+    this.router.navigate(['/search'], {queryParams: {query: formData.value.searchQuery}})
+  }
 }

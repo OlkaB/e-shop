@@ -5,6 +5,7 @@ import { AllProductsModel, CarModel, PartModel, MechanicServiceModel, EngineMode
 
 @Injectable()
 export class ProductsService {
+  mainCategoriesObj = this.categoriesService.mainCategories; 
   allProducts: AllProductsModel = new AllProductsModel (
     [
       new CarModel('1_0001', 'garbus', 1765, 'T3-DM', 'Pb', 12506, 'lorem ipsum', ['http://i.iplsc.com/wszystkie-garbusy-maja-czterocylindrowy-silnik-bokser-umiesz/0001S9B7G7NQN5SH-C116-F4.jpg', 'https://spplthumb.blob.core.windows.net/1000x901c/08/ee/e1/volkswagen-garbus-sportowy-coupe-sprzedam-345308322.jpg'], ['VW', 'oldTimer'], 3, 'pcs', 12000, 15000, 'VW', 4, ['very good', 'fantastic']),
@@ -23,7 +24,7 @@ export class ProductsService {
       new EngineModel('4_002', 'CarmanGhia T8-C', 'AirCooled', 'ghia is good for you', ['http://www.newoldcar.co.uk/images/Featured_Cars/Volkswagen/Karmann/1230_1971_Volkswagen_Karmann_Ghia/1971%20Volkswagen%20Karmann%20Ghia%20Engine%20Bay.jpg', 'http://www.newoldcar.co.uk/images/Featured_Cars/Volkswagen/Karmann/1228_1964_Volkswagen_Karmann_Ghia/1964%20Volkswagen%20Karmann%20Ghia%20Engine%20Bay.JPG'], ['AirCooled', 'VW', 'CustomBuild'], 55000, 0, 'VW & QuickStickPerformance', 5, ['The best customized carman custom build engines', 'QuickStickPerformance rulez']),
     ],
     [
-      new GadgetModel('5_00001', 'VW beetle toy', 'beautiful and corolfull', ['https://ae01.alicdn.com/kf/HTB1vlg2KpXXXXcCXFXXq6xXFXXXm/4-in1-kinsmart-1967-font-b-vw-b-font-font-b-beetle-b-font-czarny-type1.jpg'], ['toys'], 100, 'pcs', 100, 0, 'ToyStory', 4, [])
+      new GadgetModel('5_00001', 'VW beetle toy | garbus', 'beautiful and corolfull', ['https://ae01.alicdn.com/kf/HTB1vlg2KpXXXXcCXFXXq6xXFXXXm/4-in1-kinsmart-1967-font-b-vw-b-font-font-b-beetle-b-font-czarny-type1.jpg'], ['toys'], 100, 'pcs', 100, 0, 'ToyStory', 4, [])
     ]
   );
 
@@ -42,10 +43,8 @@ export class ProductsService {
   }
 
   getProductByIdFromAllProds(searchedProductId) {
-    let mainCategoriesObj = this.categoriesService.mainCategories;    
-
-    for(let i = 0; i < mainCategoriesObj.length; i++) {
-      let outcome = this.allProducts[mainCategoriesObj[i].name].filter(function(item) {
+    for(let i = 0; i < this.mainCategoriesObj.length; i++) {
+      let outcome = this.allProducts[this.mainCategoriesObj[i].name].filter(function(item) {
         //console.log("BASKET LOOP Step2_item: ", item);
         //console.log(i, ". BASKET LOOP Step3_data: searchedProductId_", searchedProductId, typeof searchedProductId, " loopedItemId_", item.id, typeof item.id);
         return item.id == searchedProductId;
@@ -59,16 +58,27 @@ export class ProductsService {
     }
   }
 
-  getProductByNameMatch(match) {
-    /*var jsObjects = [
-     {a: 1, b: 2}, 
-     {a: 3, b: 4}, 
-     {a: 5, b: 6}, 
-     {a: 7, b: 8}
-    ];
-    var result = jsObjects.filter(function( obj ) {
-      return obj.b == 6;
-    });*/
+  getProductBySearchQuery(query) {
+     //console.log("SEARCH QUERY_passed query: ", query);
+     let regExp = new RegExp(query);
+     let foundProds = [];
+     for(let i = 0; i < this.mainCategoriesObj.length; i++) {
+      let outcome = this.allProducts[this.mainCategoriesObj[i].name].filter(function(item) {
+        //console.log("Step2_item: ", item);
+        /* assume, that we want to match query with name and producer product's properties*/
+        if(item.hasOwnProperty('name')) {
+          return item.name.match(regExp, 'gi') !== null;
+        } else if(item.hasOwnProperty('producer')) {
+          return item.producer.match(regExp, 'gi') !== null;
+        }
+      });
+      //console.log("Step2 OUTCOME: ", outcome, typeof outcome);
+      if (outcome !== undefined && outcome.length > 0) {
+        foundProds.push(outcome)
+      }
+    }
+    //console.log("Step3 ALL FOUND PRODS: ", foundProds);
+    return foundProds;
   }
 
 }

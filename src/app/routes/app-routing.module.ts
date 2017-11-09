@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   {path: 'c/:catId/p/:prodId', component: ProductPageComponent},
   {path: 'cart', component: BasketPageComponent},
   {path: 'order', component: PurchasePagesComponent},
-  {path: 'search/:query', component: SearchResultPageComponent},
+  {path: 'search', component: SearchResultPageComponent},
   {path: '**', component: NotFoundPageComponent}
 ];
 
