@@ -1,0 +1,12 @@
+.categoriesList {
+  list-style-type: none;
+  -webkit-padding-start: 0;
+}
+
+.boldTxt {
+  font-weight: bold;
+}
+
+a:active {
+  text-decoration: none;
+}

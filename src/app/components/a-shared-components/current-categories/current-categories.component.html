@@ -1,3 +1,10 @@
-<p>
-  current-categories works!
-</p>
+<ul class="categoriesList">
+  <li>Categories:</li>
+  <ul>
+    <li *ngFor="let category of categories; let i = index" [attr.data-categoryId]="category.id">
+      <a [routerLink]="['/c', category.id]" [ngClass]="{boldTxt: currentCategoryId===category.id}">
+        {{category.name}}
+      </a>
+    </li>
+  </ul>
+</ul>

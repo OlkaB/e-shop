@@ -28,7 +28,6 @@ import { PurchasePagesComponent } from './components/purchase-pages/purchase-pag
   import { PaymentSettingsComponent } from './components/purchase-pages/payment-settings/payment-settings.component';
   import { BasketSummaryComponent } from './components/purchase-pages/basket-summary/basket-summary.component';
   import { ThankYouPageComponent } from './components/purchase-pages/thank-you-page/thank-you-page.component';
-import { BreadcrumbsComponent } from './components/a-shared-components/breadcrumbs/breadcrumbs.component';
 import { CurrentCategoriesComponent } from './components/a-shared-components/current-categories/current-categories.component';
 import { FooterComponent } from './components/a-shared-components/footer/footer.component';
 import { HeaderComponent } from './components/a-shared-components/header/header.component';
@@ -61,7 +60,6 @@ import { FormatPricePipe } from './pipes/format-price.pipe';
     PaymentSettingsComponent,
     BasketSummaryComponent,
     ThankYouPageComponent,
-    BreadcrumbsComponent,
     CurrentCategoriesComponent,
     FooterComponent,
     HeaderComponent,
