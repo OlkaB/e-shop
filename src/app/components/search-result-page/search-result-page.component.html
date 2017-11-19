@@ -1,36 +1,40 @@
-<h3>Info: No product links yet</h3>
 <div class="col-xs-12" *ngIf="foundProducts.length > 0">
-<ul class="list-group product-list" *ngFor="let product of foundProducts">
-  <li class="list-group-item list-group-item-action product-list_item">
-    <div class="row">
-      <div class="col-xs-3">
-        <!-- <a [routerLink]="['/c', currentCategory.id, 'p', product[0].id]" [title]="product[0].name"> -->
-          <img [src]="product[0].images[0]" [alt]="product[0].name" class="img-responsive">
-        <!-- </a> -->
-      </div>
-      <div class="col-xs-9">
-        <!-- <a [routerLink]="['/c', currentCategory.id, 'p', item.id]"> -->
-          <h3>
-            {{ product[0].name }}, id: {{ product[0].id }}
-          </h3>
-        <!-- </a> -->
-        <div class="opinionRating">
-            <i *ngFor="let star of stars; let i = index" class="starItem" class="glyphicon {{ i < product[0].rating ? 'glyphicon-star' : 'glyphicon-star-empty' }}"></i>
-        </div>
-        <!-- <a [title]="item.name" [routerLink]="['/c', currentCategory.id, 'p', item.id]"> -->
-          <p class="description">
-            product description: {{ product[0].description }}
-          </p>
-        <!-- </a> -->
-        <p class="price">
-          <b>
-            price: {{ product[0].price | formatPrice }}
-          </b>
-        </p>
-        <p class="price-old" *ngIf="product[0].priceOld > product[0].price">
-          old price: <span>{{ product[0].priceOld | formatPrice }}</span>
-        </p>
-        <input type="number" name="addProductAmount" value="1" ref-addAmount class="amount">
+  <p class="list-group-item list-group-item-info">
+    <i class="glyphicon glyphicon-exclamation-sign"></i>
+    &nbsp;Info: No product links on below list yet.
+  </p>
+  <hr>
+  <ul class="list-group product-list" *ngFor="let product of foundProducts">
+    <li class="list-group-item list-group-item-action product-list_item">
+      <div class="row">
+        <div class="col-xs-3">
+          <!-- <a [routerLink]="['/c', currentCategory.id, 'p', product[0].id]" [title]="product[0].name"> -->
+            <img [src]="product[0].images[0]" [alt]="product[0].name" class="img-responsive">
+            <!-- </a> -->
+          </div>
+          <div class="col-xs-9">
+            <!-- <a [routerLink]="['/c', currentCategory.id, 'p', product[0].id]"> -->
+              <h3>
+                {{ product[0].name }}, id: {{ product[0].id }}
+              </h3>
+              <!-- </a> -->
+              <div class="opinionRating">
+                <i *ngFor="let star of stars; let i = index" class="starItem" class="glyphicon {{ i < product[0].rating ? 'glyphicon-star' : 'glyphicon-star-empty' }}"></i>
+              </div>
+              <!-- <a [title]="product[0].name" [routerLink]="['/c', currentCategory.id, 'p', product[0].id]"> -->
+                <p class="description">
+                  product description: {{ product[0].description }}
+                </p>
+                <!-- </a> -->
+                <p class="price">
+                  <b>
+                    price: {{ product[0].price | formatPrice }}
+                  </b>
+                </p>
+                <p class="price-old" *ngIf="product[0].priceOld > product[0].price">
+                  old price: <span>{{ product[0].priceOld | formatPrice }}</span>
+                </p>
+                <input type="number" name="addProductAmount" value="1" ref-addAmount class="amount">
         <!-- <button type="button" class="btn btn-success add-to-cart" (click)="addToCart(product[0].id, position, addAmount.value, currentCategory.id, item)">
           Add to cart
         </button> -->
@@ -43,7 +47,7 @@
 <div class="col-xs-12" *ngIf="foundProducts.length === 0">
   <p class="list-group-item list-group-item-warning">
     <i class="glyphicon glyphicon-exclamation-sign"></i>
-    &nbsp;Brak produktów odpowiadających Twojemu zapytaniu.
+    &nbsp;Brak produktów odpowiadających Twojemu zapytaniu. Możesz wyszukiwać po nazwie produktu lub producencie (np. VW).
   </p>
   <br><br>
   <button type="button" class="btn btn-info add-to-cart" [routerLink]="['']"><< Wróć do zakupów</button>
