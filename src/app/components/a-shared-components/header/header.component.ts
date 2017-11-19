@@ -10,6 +10,7 @@ import { CategoriesService } from '../../../services-and-models/categories.servi
 export class HeaderComponent implements OnInit {
   mainCategories = this.categoriesService.mainCategories;
   navBarReveal = false;
+  searchQuery;
   
   constructor(private categoriesService: CategoriesService,
               private router: Router) { }
@@ -22,6 +23,8 @@ export class HeaderComponent implements OnInit {
   }
 
   submitSearchQuery(formData) {
-    this.router.navigate(['/search'], {queryParams: {query: formData.value.searchQuery}})
+    this.router.navigate(['/search'], {queryParams: {query: formData.value.searchQuery}});
+    /* clear search field */
+    this.searchQuery = "";
   }
 }

@@ -1,0 +1,27 @@
+.product-list_item h3 {
+  margin-top:  0;
+}
+
+.product-list_item .price {
+  float:  left;
+}
+
+.product-list_item .price-old {
+  float:  left;
+  margin: 0 20px;
+}
+
+.product-list_item .price-old > span {
+  text-decoration: line-through;
+}
+
+.product-list_item .amount {
+  margin-left: 40px;
+  max-width: 60px;
+  text-align: center;
+  height: 34px;
+}
+
+.product-list_item .add-to-cart {
+  margin-top:  -2px;
+}

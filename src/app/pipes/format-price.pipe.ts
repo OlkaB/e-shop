@@ -5,15 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatPricePipe implements PipeTransform {
 
-  transform(value: any, currency?: any): any {   
+  transform(value: any, currency?: any): string {   
     let outcome;
 
     if(!currency) {
       currency = "zł";
     }
-    outcome = value.toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
-    return outcome;
+    return value.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
 }

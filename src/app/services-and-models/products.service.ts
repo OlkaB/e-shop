@@ -32,7 +32,11 @@ export class ProductsService {
 
   getCategoryProducts(categoryId) {
     //console.log("Particular category (" + categoryId + ") products: ", this.allProducts[categoryId]);
-    return this.allProducts[categoryId].slice();
+    try {
+      return this.allProducts[categoryId].slice();
+    } catch (error){
+      console.warn("Category id "+ categoryId + " doesn't exists anymore.\n", error.message);
+    }
   }
 
   getProductByIdFromCat(categoryId, productId) {
@@ -60,16 +64,17 @@ export class ProductsService {
 
   getProductBySearchQuery(query) {
      //console.log("SEARCH QUERY_passed query: ", query);
-     let regExp = new RegExp(query);
+     let regExp = new RegExp(query, 'gi');
      let foundProds = [];
+     
      for(let i = 0; i < this.mainCategoriesObj.length; i++) {
       let outcome = this.allProducts[this.mainCategoriesObj[i].name].filter(function(item) {
         //console.log("Step2_item: ", item);
         /* assume, that we want to match query with name and producer product's properties*/
         if(item.hasOwnProperty('name')) {
-          return item.name.match(regExp, 'gi') !== null;
+          return item.name.match(regExp) !== null;
         } else if(item.hasOwnProperty('producer')) {
-          return item.producer.match(regExp, 'gi') !== null;
+          return item.producer.match(regExp) !== null;
         }
       });
       //console.log("Step2 OUTCOME: ", outcome, typeof outcome);

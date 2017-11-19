@@ -34,12 +34,11 @@ import { HeaderComponent } from './components/a-shared-components/header/header.
 import { ProductRatingComponent } from './components/a-shared-components/product-rating/product-rating.component';
 import { AddBasketPopupComponent } from './components/a-shared-components/add-basket-popup/add-basket-popup.component';
 
-/* pipes */
-import { GetCartItemDataPipe } from './pipes/get-cart-item-data.pipe';
-import { ShowOldPriceConditionPipe } from './pipes/show-old-price-condition.pipe';
-
 /* directives */
 import { StarRatingDirective } from './directives/star-rating.directive';
+
+/* pipes */
+import { GetCartItemDataPipe } from './pipes/get-cart-item-data.pipe';
 import { FormatPricePipe } from './pipes/format-price.pipe';
 
 
@@ -66,7 +65,6 @@ import { FormatPricePipe } from './pipes/format-price.pipe';
     ProductRatingComponent,
     AddBasketPopupComponent,
     GetCartItemDataPipe,
-    ShowOldPriceConditionPipe,
     StarRatingDirective,
     FormatPricePipe
   ],

@@ -9,6 +9,8 @@ import { ProductsService } from '../../services-and-models/products.service';
 })
 export class SearchResultPageComponent implements OnInit {
   foundProducts;
+  stars= [1,2,3,4,5];
+  currentCategory: {id: number, name: string};
 
   constructor(private activatedRoute: ActivatedRoute,
               private productsService: ProductsService) { }
@@ -17,7 +19,8 @@ export class SearchResultPageComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       let query = params['query'];
       this.foundProducts = this.productsService.getProductBySearchQuery(query);
-      console.log("PRODUCTS TO SHOW: ", this.foundProducts, "\nPROD1: ", this.foundProducts[0][0]['name'], "PROD2: ", this.foundProducts[1][0]['name']);
+      console.log("PRODUCTS TO SHOW: ", this.foundProducts, this.foundProducts.length == 0);
+      //console.log("PRODUCTS TO SHOW: ", this.foundProducts, "\nPROD1: ", this.foundProducts[0][0]['name'], "PROD2: ", this.foundProducts[1][0]['name']);
     });
   }
 

@@ -19,7 +19,7 @@
       </ul>
       <form class="navbar-form navbar-right" (ngSubmit)="submitSearchQuery(formData)" #formData="ngForm">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" name="searchQuery" ngModel>
+          <input type="text" class="form-control" placeholder="Search" name="searchQuery" [(ngModel)]="searchQuery">
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit">
               <a><i class="glyphicon glyphicon-search"></i></a>
